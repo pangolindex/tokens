@@ -6,7 +6,7 @@ Such a large collection can be maintained only through a community effort, so _f
 
 This repo is intended to be similar to Trust Wallet's asset repository. Token logos are stored according to their Avalanche address under the `assets` directory. Tokens are stored in the format `<token-address>/logo.png`.
 
-## How to Add Yours
+## Add Yours
 Create a PR adding your token logo to the `assets` folder. Create a new folder with your token address (with properly formatted capitalization) and add a `logo.png` file inside the directory.
 
 ## Disclaimer
