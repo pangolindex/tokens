@@ -6,8 +6,6 @@ const ASSETS = './assets';
 
 const dirs = readdirSync(ASSETS).filter(name => name !== getAddress(name));
 
-if (dirs.length > 0) {
-	for (const name of dirs) {
-		renameSync(join(ASSETS, name), join(ASSETS, getAddress(name)));
-	}
+for (const name of dirs) {
+	renameSync(join(ASSETS, name), join(ASSETS, getAddress(name)));
 }
