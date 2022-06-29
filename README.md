@@ -18,17 +18,17 @@ Token images are stored in the format `<token-address>/logo_24.png` and `<token-
 ## Example directory structures
 ```
 ├─ tokens/
-│
-└─┬─ assets/
-  │
-  ├─┬─ 0x60781C2586D68229fde47564546784ab3fACA982/
-  │ ├── logo_24.png
-  │ └── logo_48.png
-  │
-  ├─┬─ 0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/
-  │ ├── logo_24.png
-  │ └── logo_48.png
-  │
+├───[chain_id]
+└───┬─ assets/
+    │
+    ├─┬─ 0x60781C2586D68229fde47564546784ab3fACA982/
+    │ ├── logo_24.png
+    │ └── logo_48.png
+    │
+    ├─┬─ 0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/
+    │ ├── logo_24.png
+    │ └── logo_48.png
+    │
  ...
 ```
 
