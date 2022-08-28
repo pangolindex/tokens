@@ -4,8 +4,29 @@ import {getAddress} from '@ethersproject/address';
 
 const ASSETS = './assets';
 
-const dirs = readdirSync(ASSETS).filter(name => name !== getAddress(name));
+// Legacy top level tokens
+const legacyTokenDirs = readdirSync(ASSETS).filter(isBadToken);
+for (const token of legacyTokenDirs) {
+	renameSync(join(ASSETS, token), join(ASSETS, correctAddress(token)));
+}
 
-for (const name of dirs) {
-	renameSync(join(ASSETS, name), join(ASSETS, getAddress(name)));
+// Tokens nested inside chainId directories
+const chainIds = readdirSync(ASSETS).filter(isChainId);
+for (const chainId of chainIds) {
+	const tokens = readdirSync(join(ASSETS, chainId)).filter(isBadToken);
+	for (const token of tokens) {
+		renameSync(join(ASSETS, chainId, token), join(ASSETS, chainId, correctAddress(token)));
+	}
+}
+
+function isChainId(name) {
+	return !name.toLowerCase().startsWith('0x');
+}
+
+function isBadToken(name) {
+	return name.toLowerCase().startsWith('0x') && name !== correctAddress(name);
+}
+
+function correctAddress(address) {
+	return getAddress(address.toLowerCase());
 }
