@@ -4,14 +4,7 @@ import {getAddress} from '@ethersproject/address';
 
 const ASSETS = './assets';
 
-// Legacy top level tokens
-const legacyTokenDirs = readdirSync(ASSETS).filter(isBadToken);
-for (const token of legacyTokenDirs) {
-	renameSync(join(ASSETS, token), join(ASSETS, correctAddress(token)));
-}
-
-// Tokens nested inside chainId directories
-const chainIds = readdirSync(ASSETS).filter(isChainId);
+const chainIds = readdirSync(ASSETS);
 for (const chainId of chainIds) {
 	const tokens = readdirSync(join(ASSETS, chainId)).filter(isBadToken);
 	for (const token of tokens) {
@@ -19,11 +12,8 @@ for (const chainId of chainIds) {
 	}
 }
 
-function isChainId(name) {
-	return !name.toLowerCase().startsWith('0x');
-}
-
 function isBadToken(name) {
+	// Special ignore for non-evm tokens ie. "wrap.testnet"
 	return name.toLowerCase().startsWith('0x') && name !== correctAddress(name);
 }
 

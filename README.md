@@ -2,9 +2,7 @@
 
 This repository is a comprehensive collection of token assets for pooled tokens on Pangolin.
 
-Such a large collection can be maintained only through a community effort, so feel free to add your token.
-
-Token logos are stored according to their Avalanche address under the `assets/` directory. 
+Token logos are stored according to their address under the `assets/<chain-id>/` directory. 
 Token images are stored in the format `<token-address>/logo_24.png` and `<token-address>/logo_48.png`.
 
 ## Add Yours
@@ -18,8 +16,8 @@ Token images are stored in the format `<token-address>/logo_24.png` and `<token-
 ## Example directory structures
 ```
 ├─ tokens/
-├───[chain_id]
-└───┬─ assets/
+└─┬─ assets/
+  └─┬─[chain_id]/
     │
     ├─┬─ 0x60781C2586D68229fde47564546784ab3fACA982/
     │ ├── logo_24.png
